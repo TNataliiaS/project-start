@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+
+    background-color: $white;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: $color-content;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+input, textarea, select, button {
+    font-family: inherit;
+}
+
+.img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.visually-hidden {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+
+/* Focus-element
+================*/
+:focus {
+    outline: 2px solid $black;
+}
+
+:focus:not(:focus-visible) {
+    outline: 0;
+}
+
+:focus-visible {
+    outline: 2px solid $black;
+}
+
+
+/* Container
+================*/
+.container {
+    width: 100%;
+    max-width: 1230px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
