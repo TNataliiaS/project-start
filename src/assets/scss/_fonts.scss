@@ -1,21 +1,3 @@
-@font-face {
-    font-family: 'Montserrat';
-    src: local('Montserrat'),
-         url('../fonts/Montserrat/MontserratRegular.woff2') format('woff2'),
-         url('../fonts/Montserrat/MontserratRegular.woff') format('woff'),
-         url('../fonts/Montserrat/MontserratRegular.ttf') format('ttf'),
-         url('../fonts/Montserrat/MontserratRegular.eot') format('eot');
-    font-weight: 400;
-    font-style: normal;
-}
+@import "./mixins";
 
-@font-face {
-    font-family: 'Montserrat';
-    src: local('Montserrat'),
-         url('../fonts/Montserrat/MontserratMedium.woff2') format('woff2'),
-         url('../fonts/Montserrat/MontserratMedium.woff') format('woff'),
-         url('../fonts/Montserrat/MontserratMedium.ttf') format('ttf'),
-         url('../fonts/Montserrat/MontserratMedium.eot') format('eot');
-    font-weight: 500;
-    font-style: normal;
-}
+@include font-face('Roboto', 'RobotoBold', 700);
