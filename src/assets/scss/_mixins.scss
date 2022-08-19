@@ -1,3 +1,16 @@
+@mixin font-face($font-family, $url, $weight: normal, $style: normal) {
+    @font-face {
+        font-family: $font-family;
+        src: local($font-family),
+             url('../fonts/#{$font-family}/#{$url}.woff2') format('woff2'),
+             url('../fonts/#{$font-family}/#{$url}.woff') format('woff'),
+             url('../fonts/#{$font-family}/#{$url}.ttf') format('ttf'),
+             url('/fonts/#{$font-family}/#{$url}.eot') format('eot');
+        font-weight: $weight;
+        font-style: $style;
+    }
+}
+
 @mixin breakpoint($br) {
     @media (max-width: $br) {
         @content;
