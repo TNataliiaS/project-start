@@ -1,6 +1,7 @@
 const gulp = require("gulp");
 const sourcemaps = require("gulp-sourcemaps");
 const plumber = require("gulp-plumber");
+const notify = require("gulp-notify");
 const rename = require("gulp-rename");
 const del = require("del");
 const browserSync = require("browser-sync").create();
@@ -61,6 +62,15 @@ const path = {
 /***** Tasks *****/
 function html() {
     return gulp.src(path.src.html, {base: srcPath})
+        .pipe(plumber({
+            errorHandler : function(err) {
+                notify.onError({
+                    title:    "HTML Error",
+                    message:  "Error: <%= error.message %>"
+                })(err);
+                this.emit('end');
+            }
+        }))
         .pipe(plumber())
         .pipe(htmlMin({
             collapseWhitespace: true
@@ -71,13 +81,22 @@ function html() {
 
 function css() {
     return gulp.src(path.src.css, {base: srcPath + "assets/scss/"})
-        .pipe(plumber())
+        .pipe(plumber({
+            errorHandler : function(err) {
+                notify.onError({
+                    title:    "CSS Error",
+                    message:  "Error: <%= error.message %>"
+                })(err);
+                this.emit('end');
+            }
+        }))
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             cascade: true
         }))
         .pipe(gcmq())
+        // .pipe(gulp.dest(path.build.css))
         .pipe(cleanCSS({
             level: {
                 1: {
@@ -96,7 +115,15 @@ function css() {
 
 function js() {
     return gulp.src(path.src.js, {base: srcPath + 'assets/js/'})
-        .pipe(plumber())
+        .pipe(plumber({
+            errorHandler : function(err) {
+                notify.onError({
+                    title:    "JS Error",
+                    message:  "Error: <%= error.message %>"
+                })(err);
+                this.emit('end');
+            }
+        }))
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(rename({
@@ -110,7 +137,15 @@ function js() {
 
 function images() {
     return gulp.src(path.src.images)
-        .pipe(plumber())
+        .pipe(plumber({
+            errorHandler : function(err) {
+                notify.onError({
+                    title:    "IMAGES Error",
+                    message:  "Error: <%= error.message %>"
+                })(err);
+                this.emit('end');
+            }
+        }))
         .pipe(newer(path.build.images))
         .pipe(webp())
         .pipe(gulp.dest(path.build.images))
@@ -123,7 +158,15 @@ function images() {
 
 function fonts() {
     return gulp.src(path.src.fonts)
-        .pipe(plumber())
+        .pipe(plumber({
+            errorHandler : function(err) {
+                notify.onError({
+                    title:    "FONTS Error",
+                    message:  "Error: <%= error.message %>"
+                })(err);
+                this.emit('end');
+            }
+        }))
         .pipe(newer(path.build.fonts))
         .pipe(fonter({
             formats: ['woff', 'ttf']
