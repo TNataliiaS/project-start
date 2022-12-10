@@ -3,9 +3,9 @@
         font-family: $font-family;
         src: local($font-family),
              url('../fonts/#{$font-family}/#{$url}.woff2') format('woff2'),
-             url('../fonts/#{$font-family}/#{$url}.woff') format('woff'),
-             url('../fonts/#{$font-family}/#{$url}.ttf') format('ttf'),
-             url('/fonts/#{$font-family}/#{$url}.eot') format('eot');
+             url('../fonts/#{$font-family}/#{$url}.woff') format('woff');
+            //  url('../fonts/#{$font-family}/#{$url}.ttf') format('ttf'),
+            //  url('/fonts/#{$font-family}/#{$url}.eot') format('eot');
         font-weight: $weight;
         font-style: $style;
     }
